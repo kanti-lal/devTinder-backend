@@ -32,3 +32,12 @@
 - Write a dummy auth middleware for admin
 - Write a dummy middleware for all users routes, except /user/login
 
+
+- Create a free cluster on MongoDB official website mongo atlas
+- Install mongoose library
+- Connect your application to the Database "connection-url"/devTinder
+- call the connectDB function and connect to database before starting application on 7777
+- Create a userSchema & user model
+- Create POST  /signup API to add data to database
+- Push some document using APIs from postmans
+- Error handling using try, catch 

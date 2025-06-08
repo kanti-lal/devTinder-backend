@@ -1,68 +1,28 @@
 const express = require("express");
-
+const connectDB = require("./config/database");
 const app = express();
-const { adminAuth, userAuth } = require("./middlewares/auth");
+const User = require("./models/user");
 
-app.use("/admin", adminAuth);
+app.post("/signup", async (req, res) => {
+  const user = new User({
+    firstName: "Kanti",
+    lastName: "Lal",
+    password: "kanti@123",
+  });
 
-app.use("/", (err, req, res, next) => {
-  if (err) {
-    res.status(500).send("Something went wrong");
-  }
-});
-
-app.get("/getUserData", (req, res) => {
   try {
-    throw new Error("ssds error");
-    res.send("User data sent");
-  } catch (err) {
-    res.status(500).send("something went wrong in userdata");
-  }
-});
-
-// app.get("/user", userAuth, (req, res) => {
-//   res.send("user data sent ");
-// });
-
-// app.post("/user/login", (req, res) => {
-//   res.send("user created successfully !!! ");
-// });
-
-// app.get("/admin/getAllData", (req, res) => {
-//   res.send("All data fetched ");
-// });
-
-// app.get("/admin/deleteUser", (req, res) => {
-//   res.send("Deleted a user");
-// });
-
-// app.get("/user", userAuth, (req, res) => {
-//   res.send("fetched all user");
-// });
-
-// app.use("/user", userAuth, (req, res) => {
-//   res.send("user data received");
-// });
-
-app.use(
-  "/user",
-  (req, res, next) => {
-    console.log("first");
-    // res.send("user data received");
-    next();
-  },
-  (req, res, next) => {
-    res.send("find");
-  }
-);
-
-app.use("/my", (req, res) => {
-  try {
-    throw new Error("not available");
+    await user.save();
+    res.send("User added successfully");
   } catch (error) {}
-  res.send("error in catch ");
 });
 
-app.listen("7777", () => {
-  console.log("Server is successfully listening on port 7777");
-});
+connectDB()
+  .then(() => {
+    console.log("Database connection established...");
+    app.listen("7777", () => {
+      console.log("Server is successfully listening on port 7777");
+    });
+  })
+  .catch(() => {
+    console.log("Database cannot be connected !!");
+  });
