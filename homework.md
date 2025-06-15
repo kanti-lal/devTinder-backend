@@ -73,3 +73,28 @@
 - Create passwordHash using bcrypt.hash and save user with encrypted password
 - Create loginAPI 
 - Compare password and throw errors if email or password is invalid
+
+- install cookie-parser 
+- send dummy cookie to user 
+- create GET /profile API and check if you get the cookie back
+- install jsonwebtoken
+- IN login API, after email and password validation, create a JWT token and send it back to the user
+- read the cookies inside your profile API and find the logged in user
+- userAuth middleware 
+- Add the userAuth middleware in profileAPI  and new sendConnectionRequest API 
+- set the expiry of JWT token and cookies to 7 days
+- Create userSchema method to getJWD()
+- Create userSchema method to comparePassword(passwordInputByUser)
+
+- Explore tinder APIs
+- Create a list all apis you can thing of in Dev tinder
+- Group multiple routes under respective routers
+
+- Read documentation for express.router
+- Create route folder for managing auth, profile, request routers
+- create authRouter, profileRouter, requestRouter
+- Import these routes in app.js
+- Create POST /logout API 
+- Create PATCH /profile/edit
+- Create PATCH /profile/password  API -> forgot password API
+- Make sure you validate all data in every POST, PATCH apis
