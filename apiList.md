@@ -11,10 +11,16 @@
 - PATCH /profile/password
 
 ## connectionRequestRouter
-- POST /request/send/interested/:userId
-- POST /request/send/ignored/:userId
-- POST /request/review/accepted/:requestId
-- POST /request/review/rejected/:requestId
+
+- POST /request/send/:status/:userId
+<!-- - instead of creating 2 api make single with dynamic status -->
+    - POST /request/send/interested/:userId
+    - POST /request/send/ignored/:userId
+    - 
+- POST /request/review/:status/:requestId
+- <!-- - instead of creating 2 api make single with dynamic status -->
+    - POST /request/review/accepted/:requestId
+    - POST /request/review/rejected/:requestId
 
 ## userRouter
 - GET /users/connections

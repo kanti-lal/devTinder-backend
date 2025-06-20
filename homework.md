@@ -98,3 +98,23 @@
 - Create PATCH /profile/edit
 - Create PATCH /profile/password  API -> forgot password API
 - Make sure you validate all data in every POST, PATCH apis
+
+- Create connection request Schema
+- Send connection request API
+- Proper validation of Data
+- Think about ALL corner cases
+- $or query and $and query in mongoose and read all the queries from mongodb doc
+- schema.pre("save) function
+- Read more about indexes in MongoDB
+- Why do we need index in DB?
+- What is the advantages and disadvantages of creating?
+- React article about compound indexes in mongoose 
+
+- Write code with proper validation for POST /request/review/:status/:requestId
+- Thought process - POST vs GET
+-  Read about ref and populate https://https://mongoosejs.com/docs/populate.html
+-  Create GET /user/requests/received with all the checks
+-  Create GET /user/connections/ sent with all the checks
+  
+- Logic for GET /feed API
+- Explore the $nin $and $or $gt $lt $in $ne.
