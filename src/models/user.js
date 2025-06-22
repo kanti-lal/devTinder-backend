@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema(
     },
     lastName: {
       type: String,
-      minLength: 4,
+      minLength: 3,
       maxLength: 50,
     },
     emailId: {
@@ -42,7 +42,7 @@ const userSchema = new mongoose.Schema(
     age: {
       type: Number,
       min: 18,
-      max: 50,
+      max: 60,
     },
     gender: {
       type: String,

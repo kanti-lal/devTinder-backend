@@ -17,7 +17,10 @@ userRouter.get("/user/requests/received", userAuth, async (req, res) => {
       status: "interested",
     }).populate("fromUserId", USER_SAFE_DATA);
     console.log(connectionRequests);
-    res.json({ message: "data fetched successfully", connectionRequests });
+    res.json({
+      message: "data fetched successfully",
+      data: connectionRequests,
+    });
   } catch (error) {
     res.status(400).json({ message: "Error fetching user data" });
   }
@@ -53,7 +56,7 @@ userRouter.get("/feed", userAuth, async (req, res) => {
     const loggedInUser = req.user;
 
     const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 10;
+    let limit = parseInt(req.query.limit) || 10;
     limit = limit > 50 ? 50 : limit;
     const skip = (page - 1) * limit;
 
@@ -76,9 +79,7 @@ userRouter.get("/feed", userAuth, async (req, res) => {
       .select(USER_SAFE_DATA)
       .skip(skip)
       .limit(limit);
-
     res.json({ data: users });
-    console.log("🚀 ~ userRouter.get ~ users:", users);
   } catch (error) {
     res.status(400).json({ message: "Error fetching user data" });
   }
