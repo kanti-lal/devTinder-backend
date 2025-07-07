@@ -2,7 +2,7 @@ const express = require("express");
 const { userAuth } = require("../middlewares/auth");
 const paymentRouter = express.Router();
 const razorPayInstance = require("../utils/razorpay");
-const Payment = require("../models/Payment");
+const Payment = require("../models/payment");
 const Razorpay = require("razorpay");
 const { membershipAmount } = require("../utils/constants");
 const {
