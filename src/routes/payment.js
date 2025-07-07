@@ -71,13 +71,11 @@ paymentRouter.post("/payment/webhook", async (req, res) => {
     await payment.save();
 
     const user = await User.findOne({ _id: payment.userId });
-    if (paymentDetails.status === "captured") {
-      user.isPremium = true;
-      user.membershipType = paymentDetails.notes.membershipType;
-      await user.save();
-    }
-
-    console.log("🚀 ~ paymentRouter.post ~ payment:", paymentDetails);
+    // if (paymentDetails.status === "captured") {
+    user.isPremium = true;
+    user.membershipType = payment.notes.membershipType;
+    await user.save();
+    // }
 
     // if (req.body.event === "payment.captured") {
     // }
