@@ -61,7 +61,6 @@ const userSchema = new mongoose.Schema(
       default:
         "https://www.pnrao.com/wp-content/uploads/2023/06/dummy-user-male.jpg",
       validate(value) {
-        console.log("🚀 ~ validate ~ value:", value);
         if (!validator.isURL(value)) {
           throw new Error("Invalid photo url");
         }
